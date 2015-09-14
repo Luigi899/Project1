@@ -1,0 +1,76 @@
+#define image 
+
+folder = "/users/Luigi/CST205Project1/images/"
+
+pictures =[]
+count=0;
+
+for count in range(0,9):
+   imagePath = folder + str(count+1) + ".png"
+   pictures.append(makePicture(imagePath))
+   
+   count= count+1
+
+pwidth = getWidth(pictures[0])-1
+pheight = getHeight(pictures[0])-1 
+finalpix = makeEmptyPicture(pwidth, pheight)  
+
+
+#count 
+count=0
+for x in range(0,pwidth):
+    for y in range(0,pheight):
+      redPixelList = []
+      greenPixelList =[]
+      bluePixelList =[]
+      
+      for count in range(0,9):
+        pixel = getPixel(pictures[count], x, y)
+        red = getRed(pixel)
+        green = getGreen(pixel)
+        blue = getBlue(pixel)
+            
+        redPixelList.append(red)
+        greenPixelList.append(green)
+        bluePixelList.append(blue)
+        
+      #sort
+      finalred = sorted(redPixelList)
+      finalgreen = sorted(greenPixelList)
+      finalblue = sorted(bluePixelList)
+        
+      finalp = getPixel(finalpix,x,y)
+        
+      setRed(finalp, finalred[4])
+      setGreen(finalp, finalgreen[4])
+      setBlue(finalp, finalblue[4])
+      
+      #clear list  
+      redPixelList = []
+      greenPixelList = []
+      bluePixelList = []
+        
+#final pic
+show(finalpix)     
+          
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+
