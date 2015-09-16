@@ -1,10 +1,15 @@
-#Write a program using JES to create a new image from the 9 images without the guy. 
+# Write a program using JES to create a new image from the 9 images without the guy. 
 
+# Here there is a path to open the images that are in the folder.  
 folder = "/users/Luigi/CST205Project1/images/"
 
+# Empty pictures.
 pictures =[]
+
+# Set the count equal to 0.
 count=0;
 
+# Create pictures.
 for count in range(0,9):
    imagePath = folder + str(count+1) + ".png"
    pictures.append(makePicture(imagePath))
@@ -14,11 +19,11 @@ for count in range(0,9):
 pwidth = getWidth(pictures[0])-1
 pheight = getHeight(pictures[0])-1 
 
-#Create a new empty image of the appropriate width and height.
+# After created a new empty image of the appropriate width and height.
 finalpix = makeEmptyPicture(pwidth, pheight)  
 
 
-#count the pixels  
+# Count the pixels.  
 count=0
 for x in range(0,pwidth):
     for y in range(0,pheight):
@@ -26,7 +31,7 @@ for x in range(0,pwidth):
       greenPixelList = []
       bluePixelList = []
 
-#Calculate the median for each of these lists and use the median value to set new pixel values for the new image.     
+      # We have 9 images.     
       for count in range(0,9):
         pixel = getPixel(pictures[count], x, y)
         red = getRed(pixel)
@@ -37,23 +42,24 @@ for x in range(0,pwidth):
         greenPixelList.append(green)
         bluePixelList.append(blue)
         
-      #sort all the pixels 
+      # Sort all the pixels. 
       finalred = sorted(redPixelList)
       finalgreen = sorted(greenPixelList)
       finalblue = sorted(bluePixelList)
         
       finalp = getPixel(finalpix,x,y)
-        
+
+      # Set red, green blue values for the pixel for the output image.        
       setRed(finalp, finalred[4])
       setGreen(finalp, finalgreen[4])
       setBlue(finalp, finalblue[4])
       
-      #clear list of pixels  
+      # Clear our red, green, blue value lists.  
       redPixelList = []
       greenPixelList = []
       bluePixelList = []
         
-#Show the final picture
+# Show the final picture.
 show(finalpix)     
           
         
