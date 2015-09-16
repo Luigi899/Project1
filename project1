@@ -1,4 +1,4 @@
-#define image 
+#Write a program using JES to create a new image from the 9 images without the guy. 
 
 folder = "/users/Luigi/CST205Project1/images/"
 
@@ -13,17 +13,20 @@ for count in range(0,9):
 
 pwidth = getWidth(pictures[0])-1
 pheight = getHeight(pictures[0])-1 
+
+#Create a new empty image of the appropriate width and height.
 finalpix = makeEmptyPicture(pwidth, pheight)  
 
 
-#count 
+#count the pixels  
 count=0
 for x in range(0,pwidth):
     for y in range(0,pheight):
       redPixelList = []
       greenPixelList = []
       bluePixelList = []
-      
+
+#Calculate the median for each of these lists and use the median value to set new pixel values for the new image.     
       for count in range(0,9):
         pixel = getPixel(pictures[count], x, y)
         red = getRed(pixel)
@@ -34,7 +37,7 @@ for x in range(0,pwidth):
         greenPixelList.append(green)
         bluePixelList.append(blue)
         
-      #sort
+      #sort all the pixels 
       finalred = sorted(redPixelList)
       finalgreen = sorted(greenPixelList)
       finalblue = sorted(bluePixelList)
@@ -45,12 +48,12 @@ for x in range(0,pwidth):
       setGreen(finalp, finalgreen[4])
       setBlue(finalp, finalblue[4])
       
-      #clear list  
+      #clear list of pixels  
       redPixelList = []
       greenPixelList = []
       bluePixelList = []
         
-#final pic
+#Show the final picture
 show(finalpix)     
           
         
